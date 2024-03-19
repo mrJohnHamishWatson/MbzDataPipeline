@@ -11,12 +11,12 @@ def cli():
 @cli.command(name="process_music_data")
 def process() -> None:
     DataTransform().process()
+    print("Done")
 
 
 def main():
     cli()
-    #process()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,5 +1,3 @@
-
-
 from db.postgres_client import PostgresClient
 
 
@@ -13,9 +11,10 @@ class Postgres:
                    FROM stdin
                    WITH CSV HEADER
                    DELIMITER as ','
-                   """.format(table_name)
+                   """.format(
+            table_name
+        )
 
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             self.client.cursor.copy_expert(sql=copy_sql, file=f)
             self.client.conn.commit()
-

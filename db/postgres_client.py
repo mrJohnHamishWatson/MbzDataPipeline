@@ -11,7 +11,6 @@ class PostgresClient:
             user=DB_USER,
             password=DB_PASSWORD,
             host=DB_HOST,
-            port=DB_PORT
+            port=DB_PORT,
         )
         self.cursor = self.conn.cursor()
-        
