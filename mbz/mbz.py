@@ -1,9 +1,7 @@
 
-from functools import lru_cache
 from typing import List, Tuple, Union
 
 import musicbrainzngs as mbz
-
 
 
 class MbzClient:
@@ -19,15 +17,13 @@ class MbzClient:
         :return:
         """
         artist_list = mbz.search_artists(query=artist_name, limit=limit)['artist-list']
-        res = [(artist['id'], artist['name']) for artist in artist_list]
-        return res
+        return [(artist['id'], artist['name']) for artist in artist_list]
 
     def get_album(self, artist_id: str, limit: int = 100):
         if not artist_id:
             return None
         release_list = self.mbz.browse_releases(artist=artist_id, limit=limit)['release-list']
-        res = [release['title'] for release in release_list]
-        return res
+        return [release['title'] for release in release_list]
 
     def get_songs(self, album: str, artist_id: str) -> Union[List, None]:
         """
